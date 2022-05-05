@@ -1,0 +1,234 @@
+@import 'colors'
+.cart
+  padding: 0px 100px
+  padding-top: 80px
+  &__header
+    text-align: start
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 32px
+    line-height: 40px
+
+    padding-bottom: 55px
+    margin: 0
+    border-bottom: 1px solid $l-gray
+  &__products_header
+    max-height: 460px
+    overflow: auto
+    &::-webkit-scrollbar
+      width: 0
+      background: transparent
+
+  &__product 
+    display: flex
+    width: 100%
+    padding-top: 24px
+    padding-bottom: 24px
+    border-bottom: 1px solid $l-gray
+    &_header
+      border: 0
+      padding-bottom: 40px
+      padding-top: 0
+      &:last-child
+        padding-bottom: 0
+  &__product-content
+    flex-grow: 1
+    display: flex
+    justify-content: space-between
+  &__product-info
+    text-align: start
+  &__product-brand
+    font-weight: 600
+    font-size: 30px
+    line-height: 27px
+    margin: 0
+    padding-bottom: 16px
+    &_header
+      font-weight: 300
+      font-size: 16px
+      padding-bottom: 0
+
+  &__product-name
+    font-weight: 400
+    font-size: 30px
+    line-height: 27px
+    margin: 0
+    padding-bottom: 20px
+    &_header
+      font-weight: 300
+      font-size: 16px
+      padding-bottom: 5px
+
+  &__product-price
+    font-weight: 700
+    font-size: 24px
+    line-height: 24px
+    padding-bottom: 20px
+    &_header
+      font-weight: 500
+      font-size: 16px
+      padding-bottom: 10px
+  &__product-attribute-name
+    font-weight: 700
+    font-size: 18px
+    line-height: 18px
+    margin: 0
+    text-transform: uppercase
+    &_header
+      font-weight: 400
+      font-size: 14px
+      line-height: 16px
+      text-transform: capitalize
+  &__product-attribute-swatch
+    display: flex
+    gap: 8px
+    padding-top: 10px
+    padding-bottom: 16px
+    &_header
+      padding-top: 8px
+      padding-bottom: 8px
+  &__product-attribute-swatch-wrapper
+    padding: 1px
+    border: 1px solid $white
+    &_active
+      border: 1px solid $primary
+  &__product-attribute-swatch-value
+    width: 32px
+    height: 32px
+    &_header
+      width: 16px
+      height: 16px
+  &__product-attribute-text
+    display: flex
+    gap: 12px
+    padding-top: 10px
+    padding-bottom: 16px
+    &_header
+      gap: 8px
+      padding-top: 8px
+  &__product-attribute-text-value
+    border: 1px solid $black
+    width: 63px
+    height: 45px
+    font-weight: 400
+    font-size: 16px
+    line-height: 42px
+    text-align: center
+    &_header
+      min-width: 24px
+      width: fit-content
+      height: 24px
+      font-weight: 400
+      font-size: 14px
+      line-height: 21px
+      padding: 0 5px
+    &_active
+      background: $black
+      color: $white
+
+  &__product-imgs
+    width: 200px
+    height: 288px
+    &_header
+      width: 121px
+      height: 190px
+  &__product-qnt-btns
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding-right: 24px
+    &_header
+      padding-right: 8px
+  &__product-qnt-label
+    font-weight: 500
+    font-size: 24px
+    line-height: 160%
+    &_header
+      font-weight: 500
+      font-size: 16px
+      line-height: 160%
+  &__product-qnt
+    width: 45px
+    height: 45px
+    border: 1px solid $black
+    background: $white
+    font-size: 30px
+    cursor: pointer
+    &_header
+      width: 24px
+      height: 24px
+      font-size: 16px
+
+  &__total
+    display: flex
+    max-width: 279px
+    padding-top: 32px
+    &_header
+      justify-content: space-between
+      max-width: 100%
+      font-weight: 500
+      font-size: 16px
+      line-height: 18px
+  &__total-labels, &__total-values
+    display: flex
+    flex-direction: column
+    align-items: start
+    font-size: 24px
+    line-height: 28px
+  &__total-label, &__total-value
+    padding-bottom: 8px
+  &__total-label
+    &_total
+      font-weight: 500
+  &__total-labels
+    font-weight: 400
+  &__total-values
+    padding-left: 10px
+    font-weight: 700
+  &__total-value_header
+    font-weight: 700
+    font-size: 16px
+    line-height: 160%
+  &__order-btn-wrapper
+    display: flex
+    justify-content: start
+    padding-top: 8px
+  &__order-btn
+    padding: 16px 32px
+    background: $primary
+    text-transform: uppercase
+    color: $white
+    border: none
+    cursor: pointer
+    width: 279px
+  &_header
+    padding: 0
+  &__header-label
+    text-align: start
+    line-height: 18px
+    padding-bottom: 32px
+  &__header-label-text
+    font-weight: 700
+    font-size: 16px
+    text-transform: capitalize
+  &__header-label-items
+    font-size: 16px
+  &__btns_header
+    display: flex
+    gap: 12px
+  &__btn_header
+    background: $white
+    width: 140px
+    padding: 13px 0
+    border: 1px solid $black
+    text-transform: uppercase
+    font-weight: 600
+    font-size: 14px
+    line-height: 120%
+    cursor: pointer
+    text-decoration: none
+    color: $black
+    &_primary
+      background: $primary
+      color: $white
+      border: 0

@@ -1,0 +1,127 @@
+@import 'colors'
+.pdp
+  display: flex
+  padding: 0px 100px
+  padding-top: 80px
+  justify-content: center
+  &__gallery 
+    display: flex
+  &__gallery-items
+    display: flex
+    flex-direction: column
+    max-width: 120px
+    max-height: 600px
+    overflow: auto
+    gap: 30px
+    padding-right: 40px
+    &::-webkit-scrollbar 
+      display: none
+  &__gallery-item
+    cursor: pointer
+    max-height: 80px
+  &__gallery-item-img
+    width: 100%
+    height: 100%
+    object-fit: cover
+  &__gallery-showcase
+    position: relative
+  &__gallery-showcase-img
+    object-fit: cover
+    height: 511px
+    width: 610px
+  &__gallery-showcase-stockout
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background-color: rgba($white,0.6)
+    display: flex
+    align-items: center
+    justify-content: center
+    font-weight: 400
+    font-size: 45px
+    text-transform: uppercase
+    color: $dr-gray
+  &__content
+    max-width: 400px
+    text-align: start
+    padding-left: 100px
+  &__product-brand
+    font-weight: 600
+    font-size: 30px
+    line-height: 27px
+    margin: 0
+  &__product-name
+    font-weight: 400
+    font-size: 30px
+    line-height: 27px
+    margin: 0
+    padding-top: 15px
+    padding-bottom: 43px
+
+  &__product-attribute-name
+    font-weight: 700
+    font-size: 18px
+    line-height: 18px
+    margin: 0
+    text-transform: uppercase
+  &__product-attribute-swatch
+    display: flex
+    gap: 8px
+    padding-top: 10px
+    padding-bottom: 38px
+  &__product-attribute-swatch-wrapper
+    padding: 1px
+    border: 1px solid $white
+    cursor: pointer
+    &_active
+      border: 1px solid $primary
+  &__product-attribute-swatch-value
+    width: 32px
+    height: 32px
+  &__product-attribute-text
+    display: flex
+    gap: 12px
+    padding-top: 8px
+    padding-bottom: 24px
+  &__product-attribute-text-value
+    border: 1px solid $black
+    width: 63px
+    height: 45px
+    font-weight: 400
+    font-size: 16px
+    line-height: 42px
+    text-align: center
+    cursor: pointer
+    &_active
+      background: $black
+      color: $white
+  &__product-price
+    font-weight: 700
+    font-size: 18px
+    line-height: 18px
+    padding-bottom: 30px
+  &__product-price-label
+    text-transform: uppercase
+    padding-bottom: 20px
+  &__product-cart-btn
+    padding: 16px 32px
+    background: $primary
+    text-transform: uppercase
+    color: $white
+    border: none
+    cursor: pointer
+    width: 100%
+    &:disabled
+      background: $d-gray
+
+
+  &__product-description-wrapper
+    padding-top: 40px
+  &__product-description
+    overflow: auto
+    max-height: 300px
+    
+
+ 

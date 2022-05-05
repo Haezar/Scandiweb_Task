@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  font-family: "Raleway";
+  padding-bottom: 190px;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+.App-header { 
+  display: flex;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: local("Raleway-VariableFont_wght"),
+   url("./fonts/Raleway/Raleway-VariableFont_wght.ttf") format("truetype");
+}

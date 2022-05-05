@@ -1,0 +1,79 @@
+@import 'colors'
+.plp
+  height: 100%
+  padding: 0px 100px
+  padding-top: 80px
+
+  &__category-name 
+    font-weight: 400
+    font-size: 42px
+    line-height: 160%
+    text-align: start
+    text-transform: uppercase
+  &__products
+    display: flex
+    flex-wrap: wrap
+    gap: 30px
+    row-gap: 100px
+    padding-top: 100px
+    line-height: 160%
+
+  &__product-card
+    display: flex
+    position: relative
+    flex-direction: column
+    width: 386px
+    height: 444px
+    padding: 16px
+    text-align: start
+    color: $black
+    &_stockout
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      background-color: rgba($white,0.6)
+      display: flex
+      align-items: center
+      justify-content: center
+      font-weight: 400
+      font-size: 24px
+      line-height: 160%
+      text-transform: uppercase
+      color: $dr-gray
+      padding-bottom: 80px
+    &:hover
+      box-shadow: 0px 4px 35px rgba($c-gray, 0.19)
+      .plp__product-cart-btn
+        display: flex
+ 
+  &__product-cart-btn
+    position: absolute
+    bottom: 72px
+    right: 31px
+    border: none
+    background: $primary
+    border-radius: 50%
+    width: 52px
+    height: 52px
+    display: none
+    justify-content: center
+    align-items: center
+    cursor: pointer
+
+  &__product-card-img
+    object-fit: cover
+    height: 330px
+    max-width: 100%
+  &__product-card-name
+    font-weight: 300
+    font-size: 18px
+    margin: 0
+    padding-top: 25px
+    line-height: 160%
+  &__product-card-price
+    font-weight: 500
+    font-size: 18px
+    margin: 0
+    line-height: 160%

@@ -1,0 +1,139 @@
+@import 'colors'
+$overlay-color: #393748
+.header
+  display: flex
+  width: 100%
+  justify-content: space-between
+  padding: 0px 100px
+  padding-top: 30px
+  background: $white
+  z-index: 3
+  position: relative
+
+  &__category-picker
+    display: flex
+    height: fit-content
+    min-width: 226px
+    text-transform: uppercase
+  &__category-picker-link
+    text-decoration: none
+    color: $black
+
+  &__category-picker-item
+    background: none
+    border: none
+    outline: none
+    padding: 0 16px 30px
+    font-weight: 400
+
+    &:hover
+      cursor: pointer
+    &_active
+      color: $primary
+      border-bottom: 2px solid $primary
+      font-weight: 600
+
+  
+  &__logo
+    position: absolute
+    margin-left: auto
+    margin-right: auto
+    right: calc(50% - 20px)
+    top: 20px
+  &__tools
+    display: flex
+    height: fit-content
+    font-weight: 500
+    font-size: 18px
+
+  &__currency-picker
+    position: relative
+    display: flex
+    
+  &__currency-btn
+    background: none
+    border: none
+    outline: none
+    align-items: center
+    display: flex
+    cursor: pointer
+    padding: 0
+
+  &__currencies
+    display: none
+    position: absolute
+    top: 35px
+    padding: 12px 0 20px
+    background: $white
+    box-shadow: 0px 4px 35px rgba($c-gray, 0.19)
+    width: max-content
+    &_active
+      display: block
+  &__currency-picker-symbol
+    margin: 0
+    padding-right: 10px
+  &__currency-picker-arrow
+    border: solid black
+    border-width: 0 1px 1px 0
+    display: inline-block
+    padding: 2px
+    position: relative
+    &_down
+      transform: rotate(45deg)
+      bottom: 1px
+    &_up
+      transform: rotate(-135deg)
+  &__currency-item
+    display: flex
+    padding: 8px 40px 8px 20px
+    cursor: pointer
+    font-size: 18px
+    width: 100%
+    &:hover
+      background: $lt-gray
+  &__cart
+    position: relative
+    padding-left: 20px
+  &__cart-icon
+    cursor: pointer
+    position: relative
+    z-index: 1
+  &__cart-quantity
+    position: absolute
+    right: -12px
+    top: -9px
+    border-radius: 50%
+    background: $black
+    min-width: 20px
+    width: fit-content
+    height: 20px
+    color: $white
+    font-weight: 700
+    font-size: 14px
+    display: flex
+    align-items: center
+    justify-content: center
+    line-height: 16px
+  &__cart-content
+    display: none
+    z-index: 3
+    position: absolute
+    background: $white
+    right: -28px
+    top: 51px
+    padding: 32px 16px
+    width: 325px
+    &_active
+      display: block
+  &-overlay
+    display: none
+    position: fixed
+    right: 0
+    left: 0
+    top: 0
+    bottom: 0
+    background: rgba($overlay-color, 0.22)
+    z-index: 2
+    &_active
+      display: block
+  
