@@ -1,17 +1,15 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header';
-import ProductListingPage from './components/productListingPage';
-import ProductDetailsPage from './components/productDetailsPage';
-import { BrowserRouter } from 'react-router-dom';
-import Cart from './components/cart';
-
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-duplicates */
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './App.css'
+import Header from './components/Header'
+import ProductListingPage from './components/productListingPage'
+import ProductDetailsPage from './components/productDetailsPage'
+import { BrowserRouter } from 'react-router-dom'
+import Cart from './components/cart'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render () {
     return <div className="App">
     <BrowserRouter>
@@ -25,8 +23,7 @@ class App extends React.Component {
         </Routes>
     </BrowserRouter>
   </div>
-  
   }
 }
 
-export default App;
+export default App
