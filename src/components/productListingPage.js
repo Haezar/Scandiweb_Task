@@ -1,11 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as cartActions from '../actions/cart_actions'
+import * as categoryActions from '../actions/category_actions'
 import cart from '../assets/cart-w.svg'
 import * as queries from '../graphql/index.js'
 import PropTypes from 'prop-types'
+
+function withParams (Component) {
+  return props => <Component {...props} params={useParams()} />
+}
 
 class ProductListingPage extends React.Component {
   constructor (props) {
@@ -29,7 +34,7 @@ class ProductListingPage extends React.Component {
     this.props.cartActions.addToCart(cartProduct)
   }
 
-  getProducts () {
+  getProducts (categoryInput) {
     fetch('http://localhost:4000/graphql', {
       method: 'POST',
       headers: {
@@ -37,30 +42,53 @@ class ProductListingPage extends React.Component {
       },
       body: JSON.stringify({
         query: queries.GET_PRODUCTS,
-        variables: { category: this.props.store.current_cattegory }
+        variables: { category: categoryInput }
       })
     }).then((res) => res.json())
       .then((result) => {
         this.setState({ category: result.data.category })
+        this.props.categoryActions.changeCategory(this.props.params.category)
+      })
+  }
+
+  getProductsDefault () {
+    fetch('http://localhost:4000/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        query: queries.GET_PRODUCTS_DEFAULT
+      })
+    }).then((res) => res.json())
+      .then((result) => {
+        this.setState({ category: result.data.categories[0] })
+        this.props.categoryActions.changeCategory(result.data.categories[0].name)
       })
   }
 
   componentDidUpdate (previousProps, previousState) {
-    if (this.props.store.current_cattegory && (previousProps.store.current_cattegory !== this.props.store.current_cattegory)) {
-      this.getProducts()
+    if (this.props.params.category !== previousProps.params.category) {
+      if (this.props.params.category) {
+        this.getProducts(this.props.params.category)
+      } else {
+        this.getProductsDefault()
+      }
     }
   }
 
   componentDidMount () {
-    if (this.props.store.current_cattegory) {
-      this.getProducts()
+    if (this.props.params.category) {
+      this.getProducts(this.props.params.category)
+    } else {
+      this.getProductsDefault()
     }
   }
 
   render () {
     return (
     <div className='plp'>
-      <div className='plp__category-name'>{this.props.store.current_cattegory}</div>
+      <div className='plp__category-name'>{this.props.params.category}</div>
       <div className='plp__products'>
         {this.state.category &&
           this.state.category.products
@@ -79,11 +107,9 @@ class ProductListingPage extends React.Component {
                   }
                 </Link>
                 {product.inStock &&
-                  <Link to={'/cart'}>
-                    <button className='plp__product-cart-btn' onClick={() => { this.addToCart(product) }}>
-                      <img className='plp__product-cart-btn-icon' src={cart} alt='cart icon'></img>
-                    </button>
-                  </Link>
+                  <button className='plp__product-cart-btn' onClick={() => { this.addToCart(product) }}>
+                    <img className='plp__product-cart-btn-icon' src={cart} alt='cart icon'></img>
+                  </button>
                 }
               </div>
             )}
@@ -100,13 +126,16 @@ const mapStateToProps = store => {
 }
 function mapDispatchToProps (dispatch) {
   return {
-    cartActions: bindActionCreators(cartActions, dispatch)
+    cartActions: bindActionCreators(cartActions, dispatch),
+    categoryActions: bindActionCreators(categoryActions, dispatch)
   }
 }
 
 ProductListingPage.propTypes = {
   store: PropTypes.object,
-  cartActions: PropTypes.object
+  cartActions: PropTypes.object,
+  categoryActions: PropTypes.object,
+  params: PropTypes.object
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductListingPage)
+export default connect(mapStateToProps, mapDispatchToProps)(withParams(ProductListingPage))

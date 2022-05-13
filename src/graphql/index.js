@@ -69,3 +69,35 @@ export const GET_PRODUCTS = `
     }
   }
 `
+export const GET_PRODUCTS_DEFAULT = `
+  query GetCategoryDefault {
+    categories {
+      name
+      products {
+        id
+        name
+        inStock
+        gallery
+        description
+        category
+        attributes {
+          id
+          name
+          type
+          items {
+            id
+            displayValue
+            value
+          }
+        }
+        prices {
+          currency {
+            label
+          }
+          amount
+        }
+        brand
+      }
+    }
+  }
+`

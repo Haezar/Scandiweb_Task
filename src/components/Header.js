@@ -84,7 +84,7 @@ class Header extends React.Component {
         <div className='header'>
           <div className='header__category-picker'>
             {this.props.store.categories && this.props.store.categories.map(category => (
-              <Link to={'/'} className='header__category-picker-link' key={category}>
+              <Link to={'/category/' + category} className='header__category-picker-link' key={category}>
                 <div
                 className={'header__category-picker-item ' + (this.props.store.current_cattegory === category ? 'header__category-picker-item_active' : '')}
                 key={category}

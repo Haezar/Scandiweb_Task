@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-duplicates */
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import ProductListingPage from './components/productListingPage'
@@ -17,7 +17,10 @@ class App extends React.Component {
         <Header></Header>
       </header>
         <Routes>
-          <Route path="/" element={<ProductListingPage />} />
+          <Route path="/category" element={<ProductListingPage />}>
+            <Route path=':category' element={<ProductListingPage />} />
+          </Route>
+          <Route path='/' element={<Navigate replace to="/category" />} />
           <Route path="/pdp/:id" element={<ProductDetailsPage/>}/>
           <Route path="/cart" element={<Cart/>}/>
         </Routes>

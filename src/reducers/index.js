@@ -9,17 +9,28 @@ const reducer = function (state = { numberCart: 0, cart: [], cartIds: {}, total:
     case 'LOAD_CURRENCIES':
       return { ...state, currencies: action.payload }
     case 'ADD_TO_CART': {
-      let cartItems = [...state.cart]
       const existedProduct = state.cart.findIndex(item => item.id === action.payload.id)
       if (existedProduct === -1) {
-        cartItems.push(action.payload)
+        return {
+          ...state,
+          cart: [].concat(state.cart, {
+            ...action.payload,
+            currentAttributes: action.payload.currentAttributes.map(attr => {
+              return {
+                attributeId: attr.attributeId,
+                attributeValue: attr.attributeValue
+              }
+            })
+          }
+          ),
+          numberCart: state.numberCart + 1
+        }
       } else {
-        cartItems = cartItems.map((item, i) => existedProduct === i ? { ...item, quantity: item.quantity + action.payload.quantity } : item)
-      }
-      return {
-        ...state,
-        cart: cartItems,
-        numberCart: state.numberCart + 1
+        return {
+          ...state,
+          cart: [...state.cart].map((item, i) => existedProduct === i ? { ...item, quantity: item.quantity + action.payload.quantity } : item),
+          numberCart: state.numberCart + 1
+        }
       }
     }
     case 'CHANGE_PRODUCT_QTY': {

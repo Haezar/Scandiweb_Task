@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import * as cartActions from '../actions/cart_actions'
+import * as categoryActions from '../actions/category_actions'
 import * as queries from '../graphql/index.js'
 import parse from 'html-react-parser'
 import PropTypes from 'prop-types'
@@ -60,6 +61,7 @@ class ProductDetailsPage extends React.Component {
           { attributeId: attribute.id, attributeValue: attribute.items[0].id }
         ))
         this.setState({ product: result.data.product, currentAttributes, currentImage: result.data.product.gallery[0] })
+        this.props.categoryActions.changeCategory(result.data.product.category)
       })
   }
 
@@ -142,11 +144,9 @@ class ProductDetailsPage extends React.Component {
               return item.currency.label === this.props.store.current_currency.label
             }).amount}
           </div>
-          <Link to={'/cart'}>
             <button disabled={!this.state.product.inStock} className='pdp__product-cart-btn' onClick={() => this.addToCart()}>
               {!this.state.product.inStock ? 'out of stock' : 'add to cart'}
               </button>
-          </Link>
           <div className='pdp__product-description-wrapper'>
             <div className='pdp__product-description'>
               {parse(this.state.product.description)}
@@ -164,13 +164,15 @@ const mapStateToProps = store => {
 }
 function mapDispatchToProps (dispatch) {
   return {
-    cartActions: bindActionCreators(cartActions, dispatch)
+    cartActions: bindActionCreators(cartActions, dispatch),
+    categoryActions: bindActionCreators(categoryActions, dispatch)
   }
 }
 
 ProductDetailsPage.propTypes = {
   store: PropTypes.object,
   cartActions: PropTypes.object,
+  categoryActions: PropTypes.object,
   params: PropTypes.any
 }
 
